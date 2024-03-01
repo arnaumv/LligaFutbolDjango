@@ -1,0 +1,6 @@
+{% for match in matches %}
+    <h1>{{ match.home_team.name }} vs {{ match.away_team.name }}</h1>
+    <p>Date: {{ match.date }}</p>
+    <p>League: {{ match.league.name }}</p>
+    <a href="{% url 'team_detail' match.home_team.id %}">Ver Eventos</a>
+{% endfor %}

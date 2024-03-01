@@ -1,0 +1,13 @@
+<h1>Eventos del partido</h1>
+
+{% for match in matches %}
+    <h2>{{ match.home_team.name }} vs {{ match.away_team.name }}</h2>
+    <p>Date: {{ match.date }}</p>
+    <p>League: {{ match.league.name }}</p>
+
+    {% for event in events %}
+        {% if event.match.id == match.id %}
+            <p>{{ event.get_type_display }} by {{ event.player.name }} at {{ event.time }}</p>
+        {% endif %}
+    {% endfor %}
+{% endfor %}

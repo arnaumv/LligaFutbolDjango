@@ -1,0 +1,10 @@
+{% for detail in league_details %}
+    <h1>{{ detail.league.name }}</h1>
+    <h2>Teams:</h2>
+    <ul>
+    {% for team in detail.teams %}
+        <li>{{ team.name }}</li>
+    {% endfor %}
+    </ul>
+    <a href="{% url 'match_detail' %}" class="btn btn-primary">Ver Partidos</a>
+    {% endfor %}

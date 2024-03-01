@@ -35,8 +35,19 @@ class MatchAdmin(admin.ModelAdmin):
 class EventAdmin(admin.ModelAdmin):
     list_display = ('match', 'type', 'player', 'time')
 
+
+
+class PlayerInline(admin.TabularInline):
+    model = Player
+    extra = 0
+
+class TeamAdmin(admin.ModelAdmin):
+    inlines = [PlayerInline]
+
 admin.site.register(League)
-admin.site.register(Team)
+if admin.site.is_registered(Team):
+    admin.site.unregister(Team)
+admin.site.register(Team, TeamAdmin)
 admin.site.register(Player)
 admin.site.register(Match, MatchAdmin)
 admin.site.register(Event, EventAdmin)
